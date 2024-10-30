@@ -1,0 +1,71 @@
+[kernel]
+totalSpaceElements = 40
+totalSpaceNodes = 41
+totalTimeSteps = 50
+filename = "newmark"
+result_dir = "/home/shion/results/test-sd"
+spaceDomain = [0.0, 1.0]
+timeRange = [0.0, 1.0]
+spaceElemLength = 0.025
+timeStepSize = 0.020
+elasticModulus = 2.0
+density = 1.0
+quadTypeForSpace = "GaussLegendreLobatto"
+baseInterpolationForSpace = "Lagrange"
+spaceOrder = 1
+verbosity = 0
+algorithm = "newmark"
+
+# NOTE: If the 4th components of saveData is true, 
+# all fields will be saved in data file. 
+saveData = [true, false, false, false]
+plotData = [true, false, false]
+outputFreq = 2
+
+NEWMARK.beta = 0.166666666666
+NEWMARK.gamma = 0.5
+
+[kernel.displacementLeft]
+name = "displacementLeft"
+returnType = "Scalar"
+argType = "Time"
+numArgs = 1
+numReturns = 1
+luaScript = "./functions.lua"
+luaFunctionName = "displacementLeft"
+
+[kernel.displacementRight]
+name = "displacementRight"
+returnType = "Scalar"
+argType = "Time"
+numArgs = 1
+numReturns = 1
+luaScript = "./functions.lua"
+luaFunctionName = "displacementRight"
+
+[kernel.initialVel]
+name = "initialVel"
+returnType = "Scalar"
+argType = "Space"
+numArgs = 1
+numReturns = 1
+luaScript = "./functions.lua"
+luaFunctionName = "initialVel"
+
+[kernel.initialDisp]
+name = "initialDisp"
+returnType = "Scalar"
+argType = "Space"
+numArgs = 1
+numReturns = 1
+luaScript = "./functions.lua"
+luaFunctionName = "initialDisp"
+
+[kernel.bodyForce]
+name = "bodyForce"
+returnType = "Scalar"
+argType = "SpaceTime"
+numArgs = 2
+numReturns = 1
+luaScript = "./functions.lua"
+luaFunctionName = "bodyForce"

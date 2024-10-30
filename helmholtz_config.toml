@@ -1,0 +1,47 @@
+[kernel]
+totalSpaceElements = 20
+totalSpaceNodes = 21
+filename = "helm-1"
+result_dir = "./results"
+spaceDomain = [0.0, 1.0]
+spaceElemLength = 0.05
+wavenumber = 69.11503837897546
+wavenumber_ = 70.0
+# quadTypeForSpace = "GaussLegendreLobatto"
+quadTypeForSpace = "GaussLegendre"
+baseInterpolationForSpace = "Lagrange"
+spaceOrder = 2
+verbosity = 0
+
+[kernel.displacementLeft]
+name = "displacementLeft"
+returnType = "Scalar"
+# argType = "Space"
+argType = "Constant"
+# numArgs = 1
+# numReturns = 1
+# luaScript = "./functions.lua"
+# luaFunctionName = "displacementLeft"
+value = 0.0
+
+# [kernel.displacementRight]
+# name = "displacementRight"
+# returnType = "Scalar"
+# argType = "Constant"
+# value = 10.0
+
+[kernel.tractionRight]
+name = "tractionRight"
+returnType = "Scalar"
+argType = "Constant"
+value = 69.1150383789754
+value_ = 70.0
+
+# [kernel.bodyForce]
+# name = "bodyForce"
+# returnType = "Scalar"
+# argType = "SpaceTime"
+# numArgs = 2
+# numReturns = 1
+# luaScript = "./functions.lua"
+# luaFunctionName = "bodyForce"

@@ -1,0 +1,44 @@
+[kernel]
+totalSpaceElements = 1000
+totalSpaceNodes = 1001
+totalTimeSteps = 400
+filename = "trapezoidal"
+result_dir = "/home/shion/results/test-ricker"
+spaceDomain = [0.0, 25.0]
+timeRange = [0.0, 10.0]
+spaceElemLength = 0.025
+timeStepSize = 0.025
+elasticModulus = 1.0
+density = 1.0
+quadTypeForSpace = "GaussLegendre"
+baseInterpolationForSpace = "Lagrange"
+spaceOrder = 1
+verbosity = 0
+algorithm = "newmark"
+saveData = [true, false, false, false]
+plotData = [true, false, false]
+outputFreq = 4
+
+NEWMARK.beta = 0.25
+NEWMARK.gamma = 0.5
+
+[kernel.displacementLeft]
+name = "displacementLeft"
+returnType = "Scalar"
+argType = "Constant"
+value = 0.0
+
+[kernel.displacementRight]
+name = "displacementRight"
+returnType = "Scalar"
+argType = "Constant"
+value = 0.0
+
+[kernel.initialDisp]
+name = "initialDisp"
+returnType = "Scalar"
+argType = "Space"
+numArgs = 1
+numReturns = 1
+luaScript = "./functions.lua"
+luaFunctionName = "Ricker_wavelet"

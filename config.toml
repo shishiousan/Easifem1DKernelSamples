@@ -1,0 +1,102 @@
+[kernel]
+totalSpaceElements = 20
+totalSpaceNodes = 21
+totalTimeElements = 1
+totalTimeNodes = 2
+filename = "st"
+result_dir = "/home/shion/results/delme"
+spaceDomain = [0.0, 1.0]
+timeDomain = [0.0, 2.0]
+_spaceElemLength = "./elemlength.csv"
+spaceElemLength = 0.05
+timeElemLength = 0.10
+elasticModulus = 2.0
+_elasticModulus = "./test1.csv"
+density = 1.0
+_density = "./test1.csv"
+quadTypeForSpace = "GaussLegendreLobatto"
+quadTypeForTime = "GaussLegendreLobatto"
+baseInterpolationForSpace = "Lagrange"
+baseTypeForSpace = "Monomial"
+ipTyeForSpace = "Equdistance"
+spaceOrder = 3
+baseInterpolationForTime = "Lagrange"
+baseTypeForTime = "Monomial"
+ipTyeForTime = "Equdistance"
+timeOrder = 6
+verbosity = 0
+saveData = [true, true, false, false]
+plotData = [true, true, false]
+outputFreq = 1
+
+[kernel.velocityLeft]
+name = "velocityLeft"
+returnType = "Scalar"
+argType = "Time"
+numArgs = 1
+numReturns = 1
+luaScript = "./functions.lua"
+luaFunctionName = "velocityLeft"
+
+[kernel.velocityRight]
+name = "velocityRight"
+returnType = "Scalar"
+argType = "Time"
+numArgs = 1
+numReturns = 1
+luaScript = "./functions.lua"
+luaFunctionName = "velocityRight"
+
+[kernel.initialVel]
+name = "initialVel"
+returnType = "Scalar"
+argType = "Space"
+numArgs = 1
+numReturns = 1
+luaScript = "./functions.lua"
+luaFunctionName = "initialVel"
+
+[kernel.initialDisp]
+name = "initialDisp"
+returnType = "Scalar"
+argType = "Space"
+numArgs = 1
+numReturns = 1
+luaScript = "./functions.lua"
+luaFunctionName = "initialDisp"
+
+[kernel.bodyForce]
+name = "bodyForce"
+returnType = "Scalar"
+argType = "SpaceTime"
+numArgs = 2
+numReturns = 1
+luaScript = "./functions.lua"
+luaFunctionName = "bodyForce"
+
+[kernel.referenceDisp]
+name = "exactDisp"
+returnType = "Scaler"
+argType = "SpaceTime"
+numArgs = 2
+numReturns = 1
+luaScript = "./functions.lua"
+luaFunctionName = "exactDisp"
+plotWithResult = true
+plotErrorNorm = true
+errorNorm = true
+normType = "L2BO"
+# "L2ST", "L2BO" 
+
+[kernel.referenceVel]
+name = "exactvel"
+returnType = "Scaler"
+argType = "SpaceTime"
+numArgs = 2
+numReturns = 1
+luaScript = "./functions.lua"
+luaFunctionName = "exactVel"
+plotWithResult = true
+plotErrorNorm = true
+errorNorm = true
+normType = "L2BO"

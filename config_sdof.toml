@@ -1,0 +1,29 @@
+[kernel]
+totalTimeSteps = 100
+filename = "newmark"
+result_dir = "/home/shion/results/test-sdof"
+timeRange = [0.0, 2.0]
+timeStepSize = 0.020
+naturalFrequency = 5.0
+dampingRatio = 0.02
+verbosity = 0
+algorithm = "newmark"
+
+saveData = [true, true, false, false]
+plotData = [true, true, false]
+
+NEWMARK.beta = 0.25
+NEWMARK.gamma = 0.5
+
+
+[kernel.initialVel]
+name = "initialVel"
+returnType = "Scalar"
+argType = "Constant"
+value = 0.0
+
+[kernel.initialDisp]
+name = "initialDisp"
+returnType = "Scalar"
+argType = "Constant"
+value = 1.0

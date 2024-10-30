@@ -1,0 +1,32 @@
+[kernel]
+totalTimeElements = 20
+totalTimeNodes = 21
+filename = "test"
+result_dir = "/home/shion/results/test_sdofvst"
+timeDomain = [0.0, 9.0]
+_timeDomain = [0.0, 2000.0]
+timeElemLength = 0.45
+_timeElemLength = 100.0
+# naturalFrequency = 345.57519
+naturalFrequency1 = 125.664           # 0.20 complex
+naturalFrequency2 = 160.221           # 0.255 real roots 
+_naturalFrequency = 188.495           # 0.3 complex 
+naturalFrequency = 6.283185307179586
+dampingRatio = 0.0
+alpha = 0.0
+timeOrder = 1
+verbosity = 0
+saveData = [true, true, false, false]
+plotData = [true, true, false]
+
+[kernel.initialVel]
+name = "initialVel"
+returnType = "Scalar"
+argType = "Constant"
+value = 1.0
+
+[kernel.initialDisp]
+name = "initialDisp"
+returnType = "Scalar"
+argType = "Constant"
+value = 0.0
